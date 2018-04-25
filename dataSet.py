@@ -1,4 +1,5 @@
 import cv2
+<<<<<<< HEAD
 import sqlite3
 cam = cv2.VideoCapture(0)
 detector=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -23,6 +24,12 @@ Id=input('Enter your id: ')
 name = input('Enter name: ')
 createOrUpdatePeople(Id,name)
 
+=======
+cam = cv2.VideoCapture(0)
+detector=cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
+Id=input('Enter your id: ')
+>>>>>>> d390bf551e39eb12ce93c9b3daf4bdad67972c82
 sampleNum=0
 while(True):
     ret, img = cam.read()
