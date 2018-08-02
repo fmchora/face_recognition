@@ -1,28 +1,12 @@
 import cv2
 import numpy as np
-<<<<<<< HEAD
 import sqlite3
-=======
->>>>>>> d390bf551e39eb12ce93c9b3daf4bdad67972c82
+
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 recognizer.read('trainner/trainner.yml')
 cascadePath = "haarcascade_frontalface_default.xml"
-<<<<<<< HEAD
 faceCascade = cv2.CascadeClassifier(cascadePath)
-
-def getProfile(Id):
-    connection = sqlite3.connect("faceDatabase.db")
-    cmd = "SELECT * FROM people WHERE Id=" + str(Id)
-    cursor = connection.execute(cmd)
-    profile = None
-    for row in cursor:
-        profile = row
-    connection.close()
-    return profile
-=======
-faceCascade = cv2.CascadeClassifier(cascadePath);
->>>>>>> d390bf551e39eb12ce93c9b3daf4bdad67972c82
 
 fontface = cv2.FONT_HERSHEY_SIMPLEX
 fontscale = 1
@@ -38,15 +22,6 @@ while True:
     for(x,y,w,h) in faces:
         cv2.rectangle(im,(x,y),(x+w,y+h),(225,0,0),2)
         [Id,conf] = recognizer.predict(gray[y:y+h,x:x+w])
-<<<<<<< HEAD
-        profile = getProfile(Id)
-        if(profile != None and conf> 50):
-            cv2.putText(im,str(profile[1]), (x,y+h),fontface, fontscale, fontcolor) 
-        else:
-            Id="Unknown"
-            cv2.putText(im,str(Id), (x,y+h),fontface, fontscale, fontcolor) 
-           
-=======
         if(conf>50):
             if(Id==1):
                 Id="Felipe"
@@ -55,9 +30,7 @@ while True:
         else:
             Id="Unknown"
         cv2.putText(im,str(Id), (x,y+h),fontface, fontscale, fontcolor) 
->>>>>>> d390bf551e39eb12ce93c9b3daf4bdad67972c82
     cv2.imshow('im',im) 
     if(cv2.waitKey(10)  ==ord('q')):
         break
 cam.release()
-cv2.destroyAllWindows()
